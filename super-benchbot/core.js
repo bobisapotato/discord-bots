@@ -15,6 +15,15 @@ client.on('ready', () => {
 
     // Renaming from SLMN BenchBot to BenchBot
     client.guilds.cache.forEach(guild => guild.me.setNickname(config.discord.name));
+
+    // Output current setup for pings
+    const guild = client.guilds.resolve(config.discord.variety.guild);
+    const channel = guild.channels.resolve(config.discord.variety.channel);
+    const role = guild.roles.resolve(config.discord.variety.role);
+    console.log(`- Variety ping:`);
+    console.log(`- Will send to channel #${channel.name} [${channel.id}]`);
+    console.log(`- and ping @${role.name} [${role.id}]`);
+
 });
 
 client.on('guildCreate', guild => {
